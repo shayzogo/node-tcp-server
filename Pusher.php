@@ -6,12 +6,14 @@ class Pusher {
     private $logType;
     private $site;
     private $timestamp;
+    private $pushDrivers;
 
     public function __construct($logOptions) {
         $this->setLogString($logOptions->logString);
         $this->setLogType($logOptions->logType);
         $this->setSite($logOptions->site);
         $this->setTimestamp(new DateTime());
+        $this->setPushDrivers($logOptions->pushDrivers);
     }
 
     public function pushLogToServer() {
@@ -19,7 +21,8 @@ class Pusher {
             'type' => $this->getLogType(),
             'message' => $this->getLogString(),
             'timestamp' => $this->getTimestamp(),
-            'site' => $this->getSite()
+            'site' => $this->getSite(),
+            'drivers' => json_encode($this->getPushDrivers())
         ];
         $fp = fsockopen("localhost", 7070, $errno, $errstr, 30);
         if (!$fp) {
@@ -60,5 +63,19 @@ class Pusher {
 
     public function setTimestamp($timestamp) {
         $this->timestamp = $timestamp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPushDrivers() {
+        return $this->pushDrivers;
+    }
+
+    /**
+     * @param mixed $pushDrivers
+     */
+    public function setPushDrivers($pushDrivers) {
+        $this->pushDrivers = $pushDrivers;
     }
 }

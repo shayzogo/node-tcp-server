@@ -13,8 +13,19 @@ server.on('connection', function (sock) {
     console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
     sockets.push(sock);
     sock.on('data', function (data) {
-        let messageData = `${data}`;
-        console.log(messageData);
+        let messageData = JSON.parse(`${data}`);
+        const drivers = JSON.parse(messageData.drivers);
+        drivers.forEach(driver => {
+            switch (driver) {
+                case 'admin':
+                    break;
+                case 'db':
+                    break;
+                case 'proxy':
+                    break
+            }
+        });
+        // console.log(messageData);
     });
 
     sock.on('close', function (data) {

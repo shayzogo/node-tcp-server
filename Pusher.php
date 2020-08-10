@@ -16,6 +16,11 @@ class Pusher {
         $this->setPushDrivers($logOptions->pushDrivers);
     }
 
+    /**
+     * This method is building the final message array.
+     * It will connect the tcp server at port 7070 and push the log into it.
+     * The message will be sent as json structure of the data
+     */
     public function pushLogToServer() {
         $finalLogBuild = [
             'type' => $this->getLogType(),
@@ -65,16 +70,10 @@ class Pusher {
         $this->timestamp = $timestamp;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPushDrivers() {
         return $this->pushDrivers;
     }
 
-    /**
-     * @param mixed $pushDrivers
-     */
     public function setPushDrivers($pushDrivers) {
         $this->pushDrivers = $pushDrivers;
     }

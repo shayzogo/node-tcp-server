@@ -1,10 +1,9 @@
 <?php
-$message = filter_var($_GET['message'], FILTER_SANITIZE_STRING);
-$fp = fsockopen("localhost", 7070, $errno, $errstr, 30);
-if (!$fp) {
-    echo "$errstr ($errno)<br />\n";
-} else {
-    fwrite($fp, $message);
-    fclose($fp);
-}
+require_once 'Pusher.php';
+$options = new stdClass();
+$options->logString = 'This is a test message';
+$options->logType = 'deposit';
+$options->site = 'ares';
+$pusher = new Pusher($options);
+$pusher->pushLogToServer();
 

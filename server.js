@@ -17,9 +17,9 @@ server.on('connection', function (sock) {
         const drivers = JSON.parse(messageData.drivers);
         drivers.forEach(driver => {
             switch (driver) {
-                case 'admin': // email of admin
+                case 'admin': // email of admins
                     break;
-                case 'db': // data base server
+                case 'db': // database server
                     break;
                 case 'proxy': // well, proxy
                     break

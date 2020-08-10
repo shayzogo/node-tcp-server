@@ -17,11 +17,11 @@ server.on('connection', function (sock) {
         const drivers = JSON.parse(messageData.drivers);
         drivers.forEach(driver => {
             switch (driver) {
-                case 'admin':
+                case 'admin': // email of admin
                     break;
-                case 'db':
+                case 'db': // data base server
                     break;
-                case 'proxy':
+                case 'proxy': // well, proxy
                     break
             }
         });

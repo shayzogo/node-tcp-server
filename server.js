@@ -13,10 +13,10 @@ server.listen(port, host, () => {
 
 let sockets = [];
 
-server.on('connection', function (sock) {
+server.on('connection', function (sock) { // connection event
     console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
     sockets.push(sock);
-    sock.on('data', function (data) {
+    sock.on('data', function (data) { // when receiving data
         let messageData = JSON.parse(`${data}`);
         const drivers = JSON.parse(messageData.drivers);
         drivers.forEach(driver => {
@@ -35,7 +35,6 @@ server.on('connection', function (sock) {
                     break;
             }
         });
-        // console.log(messageData);
     });
 
     sock.on('close', function (data) {

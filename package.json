@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shayzogo/node-tcp-server/issues"
   },
-  "homepage": "https://github.com/shayzogo/node-tcp-server#readme"
+  "homepage": "https://github.com/shayzogo/node-tcp-server#readme",
+  "dependencies": {
+    "nodemailer": "^6.4.11"
+  }
 }

@@ -4,7 +4,7 @@ $options = new stdClass();
 $options->logString = 'This is a test message';
 $options->logType = 'deposit';
 $options->site = 'ares';
-$options->pushDrivers = ['admin', 'db', 'socket'];
+$options->pushDrivers = ['email', 'db', 'socket'];
 $pusher = new Pusher($options);
 $pusher->pushLogToServer();
 

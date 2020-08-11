@@ -21,17 +21,17 @@ server.on('connection', function (sock) {
         const drivers = JSON.parse(messageData.drivers);
         drivers.forEach(driver => {
             switch (driver) {
-                case 'admin': // email of admins
+                case 'admin':
                     adminTransporter.AdminTransporterModule(messageData);
                     break;
-                case 'db': // database server
+                case 'db':
                     dbTransporter.DBTransportModules(messageData);
                     break;
-                case 'proxy': // well, proxy
+                case 'proxy':
                     proxyTransporter.ProxyTransportModule(messageData);
                     break
-                case 'email': // list of pre configured emails
-                    emailTransporter.EmailTransportModule(messageData);
+                case 'email':
+                    emailTransporter.EmailTransportModule(messageData, ['emailsend1@gmail.com', 'emailsend2@gmail.com']);
                     break;
             }
         });

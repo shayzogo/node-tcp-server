@@ -3,6 +3,8 @@ const port = 7070;
 const host = '127.0.0.1';
 const server = net.createServer();
 const emailTransporter = require('./tcpModules/EmailTransportModule');
+const adminTransporter = require('./tcpModules/AdminTransportModule');
+const dbTransporter = require('./tcpModules/DBTransportModule');
 
 server.listen(port, host, () => {
     console.log('TCP Server is running on port ' + port + '.');
@@ -19,8 +21,10 @@ server.on('connection', function (sock) {
         drivers.forEach(driver => {
             switch (driver) {
                 case 'admin': // email of admins
+                    adminTransporter.AdminTransporterModule(messageData);
                     break;
                 case 'db': // database server
+                    dbTransporter.DBTransportModules(messageData);
                     break;
                 case 'proxy': // well, proxy
                     break

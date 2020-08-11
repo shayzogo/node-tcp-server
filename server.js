@@ -5,6 +5,7 @@ const server = net.createServer();
 const emailTransporter = require('./tcpModules/EmailTransportModule');
 const adminTransporter = require('./tcpModules/AdminTransportModule');
 const dbTransporter = require('./tcpModules/DBTransportModule');
+const proxyTransporter = require('./tcpModules/ProxyTransportModule');
 
 server.listen(port, host, () => {
     console.log('TCP Server is running on port ' + port + '.');
@@ -27,6 +28,7 @@ server.on('connection', function (sock) {
                     dbTransporter.DBTransportModules(messageData);
                     break;
                 case 'proxy': // well, proxy
+                    proxyTransporter.ProxyTransportModule(messageData);
                     break
                 case 'email': // list of pre configured emails
                     emailTransporter.EmailTransportModule(messageData);

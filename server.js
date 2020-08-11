@@ -24,7 +24,7 @@ server.on('connection', function (sock) {
                     break;
                 case 'proxy': // well, proxy
                     break
-                case 'email':
+                case 'email': // list of pre configured emails
                     emailTransporter.EmailTransportModule(messageData);
                     break;
             }

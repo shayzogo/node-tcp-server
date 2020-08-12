@@ -4,7 +4,9 @@ const emailAdmins = ['admin1@email.com', 'admin2@email.com', 'admin3@email.com']
 const AdminTransporterModule = (messageData) => {
     const message = '';
     const adminEmails = emailAdmins;
-    adminEmails.forEach(email => { // This is an example and need to be changed to the real details
+    adminEmails.forEach(email => {
+        // This is an example and need to be changed to the real details
+        /*
         const transport = nodemailer.createTransport({
             host: "smtp.mailtrap.io",
             port: 2525,
@@ -30,7 +32,8 @@ const AdminTransporterModule = (messageData) => {
                 console.log('Email sent: ' + info.response);
             }
         });
-    })
+        */
+    });
 
 }
 

@@ -29,7 +29,7 @@ class Pusher {
             'site' => $this->getSite(),
             'drivers' => json_encode($this->getPushDrivers())
         ];
-        $fp = fsockopen("localhost", 7070, $errno, $errstr, 30);
+        $fp = fsockopen("localhost", 8080, $errno, $errstr, 30);
         if (!$fp) {
             echo "$errstr ($errno)<br />\n";
         } else {

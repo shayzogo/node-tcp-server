@@ -18,5 +18,9 @@
   "homepage": "https://github.com/shayzogo/node-tcp-server#readme",
   "dependencies": {
     "nodemailer": "^6.4.11"
+  },
+  "devDependencies": {
+    "artillery": "^1.6.1",
+    "loadtest": "^5.0.4"
   }
 }

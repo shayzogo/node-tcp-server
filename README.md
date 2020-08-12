@@ -11,9 +11,9 @@ Pusher is a dummy pipe to get log string and pass it to the TCP server without d
 Any manipulation to the data. 
 The data is sent with a parameter to tell TCP where to send the logs, you can send them to admin emails, DB or proxy.
 
-## Added load test and artillery for testing tcp server
+## Added load test and artillery for testing tcp server - branch: loadtesting
 In loadtest you can run <br>
-`loadtest -n 1000 -c 100 --rps 200 localhost:7070?message=test`<br>
+`loadtest -n 1000 -c 100 --rps 200 http://localhost:7070?message=test`<br>
 It will make 1000 request from 100 connection and will send 200 requests per second<Br>
 
 In artillry  you can run<br>

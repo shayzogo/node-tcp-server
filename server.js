@@ -1,43 +1,32 @@
 const net = require('net');
-const port = 7070;
+//define host and port to run the server
+const port = 8080;
 const host = '127.0.0.1';
-const server = net.createServer();
-const adminTransporter = require('./tcpModules/AdminTransportModule');
-const dbTransporter = require('./tcpModules/DBTransportModule');
-const proxyTransporter = require('./tcpModules/ProxyTransportModule');
 
-server.listen(port, host, () => {
-    console.log('TCP Server is running on port ' + port + '.');
+//Create an instance of the server
+const server = net.createServer(onClientConnection);
+//Start listening with the server on given port and host.
+server.listen(port,host,function(){
+    console.log(`Server started on port ${port} at ${host}`);
 });
 
-let sockets = [];
-
-server.on('connection', function (sock) { // connection event
-    console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
-    sockets.push(sock);
-    sock.on('data', function (data) { // when receiving data
-        let messageData = JSON.parse(`${data}`); // we master make it a string so we want get buffer
-        const drivers = JSON.parse(messageData.drivers);
-        drivers.forEach(driver => {
-            switch (driver) {
-                case 'admin':
-                    adminTransporter.AdminTransporterModule(messageData);
-                    break;
-                case 'db':
-                    dbTransporter.DBTransportModules(messageData);
-                    break;
-                case 'proxy':
-                    proxyTransporter.ProxyTransportModule(messageData);
-                    break;
-            }
-        });
+//Declare connection listener function
+function onClientConnection(sock){
+    //Log when a client connnects.
+    console.log(`${sock.remoteAddress}:${sock.remotePort} Connected`);
+    //Listen for data from the connected client.
+    sock.on('data',function(data){
+        //Log data from the client
+        console.log(`${sock.remoteAddress}:${sock.remotePort} Says : ${data} `);
+        //Send back the data to the client.
+        sock.write(`You Said ${data}`);
     });
-
-    sock.on('close', function (data) {
-        let index = sockets.findIndex(function (o) {
-            return o.remoteAddress === sock.remoteAddress && o.remotePort === sock.remotePort;
-        })
-        if (index !== -1) sockets.splice(index, 1);
-        console.log('CLOSED: ' + sock.remoteAddress + ' ' + sock.remotePort);
+    //Handle client connection termination.
+    sock.on('close',function(){
+        console.log(`${sock.remoteAddress}:${sock.remotePort} Terminated the connection`);
     });
-});
+    //Handle Client connection error.
+    sock.on('error',function(error){
+        console.error(`${sock.remoteAddress}:${sock.remotePort} Connection Error ${error}`);
+    });
+};

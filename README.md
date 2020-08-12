@@ -13,9 +13,15 @@ The data is sent with a parameter to tell TCP where to send the logs, you can se
 
 ## Added load test and artillery for testing tcp server
 In loadtest you can run <br>
-`loadtest -n 1000 -c 100 --rps 200 localhost:7070?message=test`<br>
+`loadtest -n 1000 -c 100 --rps 200 http://localhost:7070?message=test`<br>
 It will make 1000 request from 100 connection and will send 200 requests per second<Br>
 
 In artillry  you can run<br>
 `artillery quick --count 10 -n 20 http://localhost:7070?message=test`<Br>
 It will make a quick test liken 10 users and every user send 20 requests
+
+## PM2
+This library is a process manager for nodejs.<br>
+It can take every aspect of the system includes creating new instances, load balancing and more.<br>
+If you dont have the file ecosystem.config.js please run<br>
+`pm2 ecosystem` <br>

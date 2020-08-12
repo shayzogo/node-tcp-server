@@ -17,7 +17,7 @@ server.on('connection', function (sock) { // connection event
     console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
     sockets.push(sock);
     sock.on('data', function (data) { // when receiving data
-        let messageData = JSON.parse(`${data}`);
+        let messageData = JSON.parse(`${data}`); // we master make it a string so we want get buffer
         const drivers = JSON.parse(messageData.drivers);
         drivers.forEach(driver => {
             switch (driver) {

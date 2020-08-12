@@ -2,7 +2,6 @@ const net = require('net');
 const port = 7070;
 const host = '127.0.0.1';
 const server = net.createServer();
-const emailTransporter = require('./tcpModules/EmailTransportModule');
 const adminTransporter = require('./tcpModules/AdminTransportModule');
 const dbTransporter = require('./tcpModules/DBTransportModule');
 const proxyTransporter = require('./tcpModules/ProxyTransportModule');
@@ -29,9 +28,6 @@ server.on('connection', function (sock) { // connection event
                     break;
                 case 'proxy':
                     proxyTransporter.ProxyTransportModule(messageData);
-                    break
-                case 'email':
-                    emailTransporter.EmailTransportModule(messageData, ['emailsend1@gmail.com', 'emailsend2@gmail.com']);
                     break;
             }
         });

@@ -17,12 +17,7 @@
   },
   "homepage": "https://github.com/shayzogo/node-tcp-server#readme",
   "dependencies": {
-    "cluster": "^0.7.7",
-    "nodemailer": "^6.4.11",
-    "redis": "^3.0.2"
+    "nodemailer": "^6.4.11"
   },
-  "devDependencies": {
-    "artillery": "^1.6.1",
-    "loadtest": "^5.0.4"
-  }
+  "devDependencies": {}
 }

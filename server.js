@@ -3,12 +3,11 @@ const net = require('net');
 const port = 7070;
 const host = '127.0.0.1';
 const server = net.createServer();
-const cluster = require('cluster');
-const cpus = require('os').cpus().length;
 
-const adminTransporter = require('./tcpModules/AdminTransportModule');
-const dbTransporter = require('./tcpModules/DBTransportModule');
-const proxyTransporter = require('./tcpModules/ProxyTransportModule');
+
+// If using cluster dont forget to run `npm install cluster`
+// const cluster = require('cluster'); // for using only for cluster mode -> see commented code example
+// const cpus = require('os').cpus().length; // will be use to instances cluster creation if used
 
 server.listen(port, host, () => {
    console.log('TCP Server is running on port ' + port + '.');
@@ -17,24 +16,10 @@ server.listen(port, host, () => {
 let sockets = [];
 
 server.on('connection', function (sock) { // connection event
-   console.log('CONNECTED: ' + sock.remoteAddress + ':' + sock.remotePort);
+   console.log('TCP listening on: ' + sock.remoteAddress + ':' + sock.remotePort);
    sockets.push(sock);
-   sock.on('data', function (data) { // when receiving data
-      let messageData = JSON.parse(`${data}`); // we master make it a string so we want get buffer
-      const drivers = JSON.parse(messageData.drivers);
-      drivers.forEach(driver => {
-         switch (driver) {
-            case 'admin':
-               adminTransporter.AdminTransporterModule(messageData);
-               break;
-            case 'db':
-               dbTransporter.DBTransportModules(messageData);
-               break;
-            case 'proxy':
-               proxyTransporter.ProxyTransportModule(messageData);
-               break;
-         }
-      });
+   sock.on('data', function (data) { // listen for incoming data
+      const messageData = JSON.parse(`${data}`);
    });
 
    sock.on('close', function (data) {

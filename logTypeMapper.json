@@ -1,0 +1,16 @@
+{
+  "types": {
+    "affiliate": [
+      "db",
+      "admin",
+      "groupReport"
+    ],
+    "deposit": [
+      "db",
+      "groupReport"
+    ],
+    "game": [
+      "db"
+    ]
+  }
+}

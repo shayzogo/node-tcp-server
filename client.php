@@ -6,5 +6,8 @@ $options->logType = 'deposit';
 $options->site = 'ares';
 $options->pushDrivers = ['db'];
 $pusher = new Pusher($options);
-$pusher->pushLogToServer();
+for ($i = 0; $i < 1000; $i++) {
+   $pusher->pushLogToServer($i+1);
+}
+
 

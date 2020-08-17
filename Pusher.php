@@ -19,12 +19,13 @@ class Pusher {
     * It will connect the tcp server at port 7070 and push the log into it.
     * The message will be sent as json structure of the data
     */
-   public function pushLogToServer() {
+   public function pushLogToServer($i) {
       $finalLogBuild = [
          'type' => $this->getLogType(),
          'message' => $this->getLogString(),
          'timestamp' => $this->getTimestamp(),
-         'site' => $this->getSite()
+         'site' => $this->getSite(),
+         'counter' => $i
       ];
       $fp = fsockopen("localhost", 7070, $errno, $errstr, 30);
       if (!$fp) {

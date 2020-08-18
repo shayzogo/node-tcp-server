@@ -21,9 +21,9 @@ server.on('connection', function (sock) { // connection event
       const messageData = JSON.parse(`${data}`);
       const transporters = typesMapper.types[messageData.type];
       transporters.forEach(transporter => {
+         const transporterName = transporter + 'Queue';
          try {
-            const transporterName = transporter + 'Queue';
-            console.log(eval(transporterName).add({msg: data + ''}));
+            eval(transporterName).add({msg: data + ''});
          } catch (e) {
             console.log(e);
          }

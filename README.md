@@ -11,7 +11,7 @@ Pusher is a dummy pipe to get log string and pass it to the TCP server without d
 Any manipulation to the data. 
 The data is sent with a parameter to tell TCP where to send the logs, you can send them to admin emails, DB or proxy.
 
-## You can maka apache benchmarking
+## You can make apache benchmark
 1. `php -S localhost:8080 -t .` will start php development server
 2. `ab -n 10000 -c 10 http://localhost:8080/client.php` use the development sever to invoke client.php
 
@@ -19,3 +19,8 @@ The data is sent with a parameter to tell TCP where to send the logs, you can se
 Redis commander is a web ui to manage redis.<br>
 Be aware, it will manage the redis of the localhost include websites and pm.<br>
 The branch of this project is `bull`
+
+## About the file test-client.sh
+This is a bash command for looping 10000 iterations of client.php.<br>
+This file, unlike the apache benchmark, will be slower and make every iteration one call (will not send multiple requests concurrently)<br>
+Try not to use this file.

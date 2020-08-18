@@ -11,16 +11,11 @@ Pusher is a dummy pipe to get log string and pass it to the TCP server without d
 Any manipulation to the data. 
 The data is sent with a parameter to tell TCP where to send the logs, you can send them to admin emails, DB or proxy.
 
-## Added load test and artillery for testing tcp server - branch: loadtesting
-In loadtest you can run <br>
-`loadtest -n 1000 -c 100 --rps 200 http://localhost:7070?message=test`<br>
-It will make 1000 request from 100 connection and will send 200 requests per second<Br>
+## You can maka apache benchmarking
+1. `php -S localhost:8080 -t .` will start php development server
+2. `ab -n 10000 -c 10 http://localhost:8080/client.php` use the development sever to invoke client.php
 
-In artillry  you can run<br>
-`artillery quick --count 10 -n 20 http://localhost:7070?message=test`<Br>
-It will make a quick test liken 10 users and every user send 20 requests
-
-## You can makae apache benchmarking
-`ab -n 10000 -c 10 http://localhost:8080/client.php`,
-> First you need to start client.php with
-`php -S localhost:8080 -t .`
+## redis-commander
+Redis commander is a web ui to manage redis.<br>
+Be aware, it will manage the redis of the localhost include websites and pm.<br>
+The branch of this project is `bull`

@@ -18,7 +18,8 @@ The data is sent with a parameter to tell TCP where to send the logs, you can se
 ## redis-commander
 Redis commander is a web ui to manage redis.<br>
 Be aware, it will manage the redis of the localhost include websites and pm.<br>
-The branch of this project is `bull`
+The branch of this project is `bull`.<br>
+To run redis commander just write `redis-commander` in the project root (installed locally)
 
 ## About the file test-client.sh
 This is a bash command for looping 10000 iterations of client.php.<br>

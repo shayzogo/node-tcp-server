@@ -4,6 +4,9 @@ const host = '127.0.0.1';
 const server = net.createServer();
 const Queue = require('bull');
 const typesMapper = require('./logTypeMapper.json');
+const dbQueue = new Queue('dbQueue');
+const adminQueue = new Queue('adminQueue');
+const groupReportQueue = new Queue('groupReportQueue');
 
 server.listen(port, host, () => {
    console.log('TCP Server is running on port ' + port + '.');
@@ -18,24 +21,12 @@ server.on('connection', function (sock) { // connection event
       const messageData = JSON.parse(`${data}`);
       const transporters = typesMapper.types[messageData.type];
       transporters.forEach(transporter => {
-         const transporterName = transporter + 'Queue';
-         const transportQueue = new Queue(transporterName, { // Initiating the Queue
-            redis: {
-               host: '127.0.0.1',
-               port: 6379,
-               password: 'root'
-            }
-         });
-
-         const data = {
-            message: messageData
-         };
-
-         const options = {
-            delay: 60000,
-            attempts: 2
-         };
-         transportQueue.add(data, options);
+         try {
+            const transporterName = transporter + 'Queue';
+            console.log(eval(transporterName).add({msg: data + ''}));
+         } catch (e) {
+            console.log(e);
+         }
       });
 
    });

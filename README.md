@@ -19,3 +19,8 @@ It will make 1000 request from 100 connection and will send 200 requests per sec
 In artillry  you can run<br>
 `artillery quick --count 10 -n 20 http://localhost:7070?message=test`<Br>
 It will make a quick test liken 10 users and every user send 20 requests
+
+## You can makae apache benchmarking
+`ab -n 10000 -c 10 http://localhost:8080/client.php`,
+> First you need to start client.php with
+`php -S localhost:8080 -t .`

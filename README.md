@@ -1,5 +1,6 @@
 # Nodejs TCP Server
-> There is no need to run npm install
+
+![node-current](https://img.shields.io/node/v/bull)
 
 This project based on 3 files
 1. server.js - a tcp server based on nodejs, will listen on port 7070

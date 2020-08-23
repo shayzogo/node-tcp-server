@@ -1,3 +1,7 @@
+/**
+ * After getting new message from the adminQueue it will send it to the admins,
+ * This feature need to be implemented
+ */
 const nodemailer = require('nodemailer');
 const emailAdmins = ['admin1@email.com', 'admin2@email.com', 'admin3@email.com'];
 

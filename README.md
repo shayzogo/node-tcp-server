@@ -41,3 +41,15 @@ Before deploying the server to production, dont forget to change the redis conne
 ```javascript
 const dbQueue = new Queue('dbQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
 ```
+
+Please make sure you are using the needed dependencies
+```json
+  "dependencies": {
+    "bull": "^3.18.0",
+    "nodemailer": "^6.4.11",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "redis-commander": "^0.7.0"
+  }
+```

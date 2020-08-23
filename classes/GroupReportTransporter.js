@@ -9,7 +9,7 @@ class GroupReportTransporter {
    sendMessageToGroupReports() {
       request({
          'method': 'POST',
-         'url': 'https://postb.in/1597652984981-7005411118734?message=' + JSON.stringify(this.message),
+         'url': 'https://postb.in/1598180826168-7872465543914?message=' + JSON.stringify(this.message),
          'headers': {}
       }, function (error, response) {
          if (error) throw new Error(error);

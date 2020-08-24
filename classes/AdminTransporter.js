@@ -10,16 +10,16 @@ class AdminTransporter {
    sendToAdmins() {
       const adminEmails = this.emailAdmins;
       adminEmails.forEach(email => { // change settings to real smtp email account
-         const transport = nodemailer.createTransport({
-            host: "smtp.mailtrap.io",
-            port: 2525,
-            auth: {
-               user: "1a2b3c4d5e6f7g",
-               pass: "1a2b3c4d5e6f7g"
-            },
-            debug: true,
-            logger: true
-         });
+         // const transport = nodemailer.createTransport({
+         //    host: "smtp.mailtrap.io",
+         //    port: 2525,
+         //    auth: {
+         //       user: "1a2b3c4d5e6f7g",
+         //       pass: "1a2b3c4d5e6f7g"
+         //    },
+         //    debug: true,
+         //    logger: true
+         // });
 
          const options = {
             from: 'log manager',
@@ -28,13 +28,13 @@ class AdminTransporter {
             text: this.message
          };
 
-         transport.sendMail(options, function (error, info) {
-            if (error) {
-               console.log(error);
-            } else {
-               console.log('Email sent: ' + info.response);
-            }
-         });
+         // transport.sendMail(options, function (error, info) {
+         //    if (error) {
+         //       console.log(error);
+         //    } else {
+         //       console.log('Email sent: ' + info.response);
+         //    }
+         // });
       });
    }
 }

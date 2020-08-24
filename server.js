@@ -33,8 +33,8 @@ server.on('connection', function (sock) { // connection event
    sockets.push(sock);
    sock.on('data', function (data) { // listen for incoming data
       const messageData = JSON.parse(`${data}`); // The data is buffered so we need to string it and parse
-      const transporters = typesMapper.types[messageData.type];
-      transporters.forEach(transporter => {
+      const transporters = typesMapper.types[messageData.type]; // get the needed transporters
+      transporters.forEach(transporter => { // iterate transporters
          const transporterName = transporter + 'Queue'; // Build the bull queue name for this transporter
          try {
             eval(transporterName).add({msg: data + ''}); // use to push the message to bull queue

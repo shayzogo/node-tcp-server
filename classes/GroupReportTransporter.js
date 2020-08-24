@@ -1,6 +1,3 @@
-const request = require('request');
-
-
 class GroupReportTransporter {
    constructor(message) {
       this.message = message;

@@ -48,7 +48,7 @@ server.on('connection', function (sock) { // connection event
    sock.on('close', function (data) { // on close connection event
       let index = sockets.findIndex(function (o) {
          return o.remoteAddress === sock.remoteAddress && o.remotePort === sock.remotePort;
-      })
+      });
       if (index !== -1) sockets.splice(index, 1);
       console.log('CLOSED: ' + sock.remoteAddress + ' ' + sock.remotePort);
    });

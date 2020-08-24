@@ -40,7 +40,7 @@ server.on('connection', function (sock) { // connection event
             eval(transporterName).add({msg: data + ''}); // use to push the message to bull queue
          } catch (e) {
             const error = JSON.stringify(e)
-            errorQueue.add({msd: error});
+            errorQueue.add({msd: error}); // Lets add the error message to the errorQueue
          }
       });
    });

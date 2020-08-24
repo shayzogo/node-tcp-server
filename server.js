@@ -12,7 +12,7 @@ const Queue = require('bull');
 const dbQueue = new Queue('dbQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
 const adminQueue = new Queue('adminQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
 const groupReportQueue = new Queue('groupReportQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
-
+const errorQueue = new Queue('errorQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}})
 /**
  * There are currently only 3 gateways, inside this json you can map any log type to any gateway
  * please make changes only to this file and dont do any bypasses
@@ -39,7 +39,8 @@ server.on('connection', function (sock) { // connection event
          try {
             eval(transporterName).add({msg: data + ''}); // use to push the message to bull queue
          } catch (e) {
-            console.log(e);
+            const error = JSON.stringify(e)
+            errorQueue.add({msd: error});
          }
       });
    });

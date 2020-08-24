@@ -7,15 +7,20 @@ class GroupReportTransporter {
    }
 
    sendMessageToGroupReports() {
-      request({
-         'method': 'POST',
-         'url': 'https://postb.in/1598180826168-7872465543914?message=' + JSON.stringify(this.message),
-         'headers': {}
-      }, function (error, response) {
-         if (error) throw new Error(error);
-         console.log(response.body);
-      });
-
+      const requestHeaders = new Headers();
+      requestHeaders.append("Content-Type", "application/json");
+      const raw = JSON.stringify(this.message);
+      const requestOptions = {
+         method: 'POST',
+         headers: requestHeaders,
+         body: raw,
+         redirect: 'follow'
+      };
+      // https://www.groupreport.bet/api/logs/
+      fetch("https://postb.in/1598251083469-8029313110746", requestOptions)
+         .then(response => response.text())
+         .then(result => console.log(result))
+         .catch(error => console.log('error', error));
    }
 }
 

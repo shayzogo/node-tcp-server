@@ -45,9 +45,9 @@ const dbQueue = new Queue('dbQueue', {redis: {port: 6379, host: '127.0.0.1', pas
 Please make sure you are using the needed dependencies
 ```json
   "dependencies": {
-    "bull": "^3.18.0",
-    "nodemailer": "^6.4.11",
-    "request": "^2.88.2"
+      "bull": "^3.18.0",
+      "nodemailer": "^6.4.11",
+      "postman-request": "^2.88.1-postman.24"
   },
   "devDependencies": {
     "redis-commander": "^0.7.0"

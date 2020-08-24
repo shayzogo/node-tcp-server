@@ -8,7 +8,7 @@ class GroupReportTransporter {
    sendMessageToGroupReports() {
       request({
          'method': 'POST',
-         'url': 'https://postb.in/1598257948929-4906771949026',
+         'url': 'https://www.groupreport.bet/api/logs/',
          'headers': {},
          'body': this.message
       }, function (error, response) {

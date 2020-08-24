@@ -9,9 +9,9 @@ const port = 7070;
  * @type {Queue}
  */
 const Queue = require('bull');
-const dbQueue = new Queue('dbQueue');
-const adminQueue = new Queue('adminQueue');
-const groupReportQueue = new Queue('groupReportQueue');
+const dbQueue = new Queue('dbQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
+const adminQueue = new Queue('adminQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
+const groupReportQueue = new Queue('groupReportQueue', {redis: {port: 6379, host: '127.0.0.1', password: ''}});
 
 /**
  * There are currently only 3 gateways, inside this json you can map any log type to any gateway

@@ -57,4 +57,4 @@ Please make sure you are using the needed dependencies
 ## about the workers
 In tge classes directory you will find the clients that will connect to the bull queues in redis.<br>
 Those files needs to run as process and they will listen to changes.<br>
-When running, they will also clear the DB from completed at least 5 seconds ago.
+When running, they will also clear the DB from completed at least 1 seconds ago.

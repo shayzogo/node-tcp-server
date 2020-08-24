@@ -21,12 +21,12 @@ class AdminTransporter {
          //    logger: true
          // });
 
-         const options = {
-            from: 'log manager',
-            to: email,
-            subject: 'Sending log entry to admin email',
-            text: this.message
-         };
+         // const options = {
+         //    from: 'log manager',
+         //    to: email,
+         //    subject: 'Sending log entry to admin email',
+         //    text: this.message
+         // };
 
          // transport.sendMail(options, function (error, info) {
          //    if (error) {

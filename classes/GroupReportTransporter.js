@@ -8,11 +8,11 @@ class GroupReportTransporter {
    sendMessageToGroupReports() {
       request({
          'method': 'POST',
-         'url': 'https://postb.in/1598255313082-6698292733635?message=' + JSON.stringify(this.message),
-         'headers': {}
+         'url': 'https://postb.in/1598257948929-4906771949026',
+         'headers': {},
+         'body': this.message
       }, function (error, response) {
          if (error) throw new Error(error);
-         console.log(response.body);
       });
 
    }
